@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área da Clínica | Alexa Medeiros Odontologia</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="page-main">
+    <section class="section">
+      <div class="container">
+        <div class="form-card" style="max-width: 42rem; margin: 0 auto; text-align: center;">
+          <p class="eyebrow">Área da Clínica</p>
+          <h1 style="margin-bottom: 1rem;">Acesso administrativo</h1>
+          <p id="admin-status" class="lead" style="margin: 0 auto 1.5rem;">
+            Verificando a planilha da clínica...
+          </p>
+          <a id="admin-link" class="button" href="#" target="_blank" rel="noopener noreferrer" hidden>Abrir planilha</a>
+          <p style="margin-top: 1rem;"><a class="text-link" href="index.html">Voltar para o site</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/site-config.js"></script>
+  <script>
+    const config = window.CLINICA_CONFIG || {};
+    const sheetUrl = config.googleSheetUrl || "";
+    const status = document.getElementById("admin-status");
+    const link = document.getElementById("admin-link");
+
+    if (sheetUrl) {
+      status.textContent = "A planilha da clínica está pronta para acesso.";
+      link.href = sheetUrl;
+      link.hidden = false;
+    } else {
+      status.textContent = "Ainda falta preencher googleSheetUrl em js/site-config.js para usar esta área.";
+    }
+  </script>
+</body>
+</html>
